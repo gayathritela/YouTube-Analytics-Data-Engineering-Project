@@ -1,4 +1,4 @@
-# YouTube-Analytics-Data-Engineering-Project
+
 # YouTube Analytics Data Engineering Project
 
 This project demonstrates an end-to-end data engineering solution that ingests, transforms, and analyzes YouTube trending video statistics using AWS services. The final output is an interactive dashboard built with Amazon QuickSight to derive insights such as top-performing content categories, regional viewership trends, and user engagement metrics.
