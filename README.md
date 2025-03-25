@@ -31,11 +31,9 @@ The pipeline follows a modular and scalable architecture leveraging AWS Glue, La
 
 ![Architecture Diagram](architecture.jpeg)
 
-### Data Source
-- YouTube trending video statistics (CSV files per region + JSON metadata)
-- Dataset hosted on [Kaggle](https://www.kaggle.com/datasets/datasnaek/youtube-new)
 
-### AWS Services Used
+
+###🔧 Tools & AWS Services Used
 | Layer             | Tools/Services                                                  |
 |------------------|-----------------------------------------------------------------|
 | Ingestion         | Amazon S3, AWS Lambda                                           |
@@ -49,21 +47,29 @@ The pipeline follows a modular and scalable architecture leveraging AWS Glue, La
 
 ---
 
-## 📊 QuickSight Dashboard Highlights
-- **KPIs (KPI Cards)**:
-  - Total Views, Likes, Comments
-  - Number of Active Regions
+### Data Source
+- YouTube trending video statistics (CSV files per region + JSON metadata)
+- Dataset hosted on [Kaggle](https://www.kaggle.com/datasets/datasnaek/youtube-new)
 
-- **Bar & Donut Charts**:
-  - Top Content Categories by Views
-  - Regional Viewership Distribution
-  - Count of Likes by Content Type
+---
 
-- **Time-Series Line Graph**:
-  - Daily Trends in Views Over Time
+## 📊 Sample Insights
 
-- **Table View**:
-  - Top Performing Videos by Likes and Views
+Some sample visuals generated from this project using Amazon QuickSight:
+
+- **Most Liked Video Categories**  
+  _e.g., People & Blogs, Entertainment, Music_
+
+- **Top Viewed Categories**  
+  _e.g., Music leads with the highest total view count_
+
+- **Regional Viewership Share**  
+  _Comparison of views from US, GB, and CA regions_
+
+- **Top Performing Videos by Engagement**  
+  _A table showing most liked & viewed videos per region_
+
+> All visuals are available in the `/screenshots` folder 
 
 ---
 
