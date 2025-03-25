@@ -11,7 +11,6 @@ This project simulates a real-world scenario where a video streaming analytics t
 - Identify top performing creators and categories
 - Measure user engagement through views, likes, and comments
 
-The dataset used is from Kaggle's [Trending YouTube Video Statistics](https://www.kaggle.com/datasets/datasnaek/youtube-new).
 
 ---
 
@@ -47,11 +46,14 @@ The pipeline follows a modular and scalable architecture leveraging AWS Glue, La
 
 ---
 
-### Data Source
-- YouTube trending video statistics (CSV files per region + JSON metadata)
-- Dataset hosted on [Kaggle](https://www.kaggle.com/datasets/datasnaek/youtube-new)
+## 📦 Dataset Source
+**Trending YouTube Video Statistics** – [Kaggle Link](https://www.kaggle.com/datasets/datasnaek/youtube-new)
+- Daily trending video data per region (US, GB, CA)
+- Includes fields like: `video_id`, `title`, `category_id`, `views`, `likes`, `comments`, `publish_time`, etc.
+- Category metadata provided via JSON files
 
 ---
+
 
 ## 📊 Sample Insights
 
@@ -73,17 +75,6 @@ Some sample visuals generated from this project using Amazon QuickSight:
 
 ---
 
-## 📁 Folder Structure
-```
-youtube-analytics-project/
-├── lambda/                  # Lambda function code for S3 trigger events
-├── glue-jobs/               # ETL jobs (PySpark scripts)
-├── scripts/                 # Athena SQL queries, Glue crawler configs
-├── screenshots/             # Sample QuickSight dashboard images
-├── README.md                # Project documentation
-```
-
----
 
 ## 🚀 Skills & Concepts Demonstrated
 - Cloud Data Engineering (AWS-first approach)
@@ -96,19 +87,8 @@ youtube-analytics-project/
 
 ---
 
-## 📦 Dataset Source
-**Trending YouTube Video Statistics** – [Kaggle Link](https://www.kaggle.com/datasets/datasnaek/youtube-new)
-- Daily trending video data per region (US, GB, CA)
-- Includes fields like: `video_id`, `title`, `category_id`, `views`, `likes`, `comments`, `publish_time`, etc.
-- Category metadata provided via JSON files
 
----
 
-## 📸 Dashboards
-> 📍Screenshots are available in the `screenshots/` folder. 
-> Final QuickSight visuals show KPIs, time trends, category performance, and regional breakdowns.
-
----
 
 
 
