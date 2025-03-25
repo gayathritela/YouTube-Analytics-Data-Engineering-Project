@@ -33,7 +33,7 @@ The pipeline follows a modular and scalable architecture leveraging AWS Glue, La
 
 
 
-###🔧 Tools & AWS Services Used
+##🔧 Tools & AWS Services Used
 | Layer             | Tools/Services                                                  |
 |------------------|-----------------------------------------------------------------|
 | Ingestion         | Amazon S3, AWS Lambda                                           |
