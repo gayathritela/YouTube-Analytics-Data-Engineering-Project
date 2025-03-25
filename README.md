@@ -25,7 +25,11 @@ The dataset used is from Kaggle's [Trending YouTube Video Statistics](https://ww
 
 ---
 
-## 🧱 Architecture Components
+## 🏗️ Architecture
+
+The pipeline follows a modular and scalable architecture leveraging AWS Glue, Lambda, S3, Athena, and QuickSight.
+
+![Architecture Diagram](architecture.jpeg)
 
 ### Data Source
 - YouTube trending video statistics (CSV files per region + JSON metadata)
