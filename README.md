@@ -1,90 +1,93 @@
+# 🎬 YouTube Analytics Data Engineering Project
 
-# YouTube Analytics Data Engineering Project
-
-This project demonstrates an end-to-end data engineering solution that ingests, transforms, and analyzes YouTube trending video statistics using AWS services. The final output is an interactive dashboard built with Amazon QuickSight to derive insights such as top-performing content categories, regional viewership trends, and user engagement metrics.
-
-## Use Case
-
-A streaming analytics team wants to analyze YouTube trending data to better understand what types of content perform well across different regions (US, GB, CA). Business stakeholders need KPIs such as most viewed content, regional user behavior, engagement rates (likes/comments), and daily view trends to make data-driven content and marketing decisions.
+An end-to-end data engineering pipeline built on AWS that ingests, transforms, and analyzes YouTube trending video statistics. The final output is a fully interactive dashboard in **Amazon QuickSight** showcasing insights like top-performing categories, regional viewership patterns, and audience engagement metrics.
 
 ---
 
-## Architecture Overview
+## 📌 Use Case
 
-**Data Source:**  
-YouTube trending video statistics (CSV & JSON files) stored in Amazon S3.
+A data team at a media analytics company needs to monitor global YouTube trends to help content strategists, marketers, and executives understand:
 
-**Pipeline Workflow:**
-1. **Ingestion Layer:**
-   - Raw CSV and JSON data uploaded to an S3 bucket.
-   - AWS Lambda triggers on `ObjectCreated` events to initiate processing.
+- Which **types of content** perform best across different **regions** (US, GB, CA)?
+- How do **views, likes, and comments** vary over time?
+- What are the most **engaging videos and categories**?
 
-2. **Processing & Cleansing:**
-   - AWS Glue ETL jobs read raw data and apply schema mapping.
-   - Data is filtered (e.g., by region), cleaned, and transformed.
-   - Output is written in partitioned Parquet format to the Cleansed S3 layer.
-
-3. **Analytics Layer:**
-   - Glue Crawlers catalog the cleansed data.
-   - AWS Athena used for validation and query testing.
-   - Amazon QuickSight connects to the Glue Data Catalog to build dashboards.
+This project simulates that real-world scenario by building a complete data pipeline and BI dashboard to support those insights.
 
 ---
 
-## Tools & Technologies
+## 🧩 Architecture Overview
 
-| Layer           | Tools/Services                                                                 |
-|----------------|----------------------------------------------------------------------------------|
-| Ingestion       | Amazon S3, AWS Lambda                                                          |
-| Processing      | AWS Glue Studio, PySpark, Glue DynamicFrames                                   |
-| Data Storage    | Amazon S3 (raw, cleansed, and analytics zones)                                 |
-| Cataloging      | AWS Glue Crawlers, AWS Glue Data Catalog                                       |
-| Query Engine    | Amazon Athena                                                                  |
-| Visualization   | Amazon QuickSight                                                              |
-| Orchestration   | AWS Lambda triggers + Glue ETL jobs                                            |
-| Language        | Python (PySpark, AWS Glue Python SDK)                                          |
+**🗂️ Data Source:**  
+Raw CSV and JSON files containing YouTube video metadata (views, likes, category, etc.) stored in Amazon S3.
 
----
+**⚙️ Pipeline Components:**
 
-## Key Features
+1. **Ingestion Layer**
+   - Raw data files uploaded to `s3://de-on-youtube-raw-*`
+   - AWS Lambda triggers on `ObjectCreated` events
 
-- Pushdown filtering for performance (`region in ('us','ca','gb')`)
-- Schema mapping and type casting
-- Data quality assurance (row count validation)
-- Partitioned storage by `region` and `category_id`
-- Interactive QuickSight dashboards with visual KPIs
+2. **Processing & Cleansing**
+   - AWS Glue ETL jobs transform and filter data
+   - Data is cleaned, typed, deduplicated, and converted to **Parquet**
+   - Output stored in partitioned form in a Cleansed S3 bucket
+
+3. **Analytics & Visualization**
+   - AWS Glue Crawlers catalog data into the Data Catalog
+   - Athena used for exploratory SQL queries
+   - QuickSight connected to the cleansed catalog table for visual dashboards
 
 ---
 
-## QuickSight Dashboard Visuals
+## 🛠️ Tools & Technologies
 
-**Metrics Tracked:**
-- Total views, likes, and comments
-- Top performing videos by views & likes
-- Views by category and region
-- Viewership trend over time
-- Engagement by content type
-
-> See `/screenshots` folder for visualizations.
-
----
-
-## Folder Structure
-📁 youtube-analytics-project/ 
-├── lambda/ # Lambda function for trigger-based ingestion 
-├── glue-jobs/ # ETL PySpark scripts for AWS Glue
-├── scripts/ # Athena SQL or crawler setup scripts 
-├── screenshots/ # QuickSight visuals
-├── README.md
-
-## Skills Demonstrated
-
-- Cloud Data Engineering on AWS
-- ETL orchestration using AWS Glue
-- Event-driven data processing using Lambda
-- Data partitioning and performance optimization
-- BI and storytelling with QuickSight
-- GitHub project documentation
+| Layer            | Services & Tools                                                                 |
+|------------------|----------------------------------------------------------------------------------|
+| Ingestion        | **Amazon S3**, **AWS Lambda**                                                    |
+| Processing       | **AWS Glue Studio**, **PySpark**, **Glue DynamicFrame API**                      |
+| Data Storage     | Amazon S3 (Raw, Cleansed, Analytics)                                             |
+| Cataloging       | AWS Glue Crawlers, Glue Data Catalog                                             |
+| Query Engine     | **Amazon Athena**                                                                |
+| Visualization    | **Amazon QuickSight**                                                            |
+| Language         | **Python**, PySpark (for Glue), SQL (for Athena)                                 |
+| Orchestration    | Event-based triggers (S3 → Lambda → Glue)                                        |
 
 ---
 
+## 🔍 Key Features
+
+- Predicate pushdown filtering (`region in ('us', 'ca', 'gb')`) for performance
+- Schema mapping and data type casting
+- Data Quality validation (row counts, column integrity)
+- Partitioned data lake by `region` and `category_id`
+- KPI cards, category trends, and regional breakdowns in QuickSight
+
+---
+
+## 📊 QuickSight Dashboard Insights
+
+**Metrics & Visuals Tracked:**
+
+- ✅ Total Views, Likes, Comments (KPI Cards)
+- 📈 Views over Time (Line Chart)
+- 🌍 Viewership Share by Region (Donut Chart)
+- 🎵 Most Viewed Content Categories (Bar Chart)
+- 👍 Top Performing Videos by Likes & Views (Table)
+- 💬 Engagement by Category (Likes, Comments)
+
+> You can find these charts in the `/screenshots` folder or explore them directly in QuickSight if connected.
+
+---
+
+
+## 🧠 Skills Demonstrated
+
+- Cloud-native ETL using **AWS Glue**
+- Trigger-based data movement via **AWS Lambda**
+- Working with **partitioned data lakes** using Parquet
+- Data modeling with **PySpark + Glue DynamicFrames**
+- Querying and validation with **Athena**
+- Business storytelling and dashboard design in **QuickSight**
+- Professional project documentation using **GitHub**
+
+---
