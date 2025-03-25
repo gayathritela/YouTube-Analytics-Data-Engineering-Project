@@ -1,93 +1,104 @@
-# 🎬 YouTube Analytics Data Engineering Project
+# YouTube Analytics Data Engineering Project
 
-An end-to-end data engineering pipeline built on AWS that ingests, transforms, and analyzes YouTube trending video statistics. The final output is a fully interactive dashboard in **Amazon QuickSight** showcasing insights like top-performing categories, regional viewership patterns, and audience engagement metrics.
-
----
-
-## 📌 Use Case
-
-A data team at a media analytics company needs to monitor global YouTube trends to help content strategists, marketers, and executives understand:
-
-- Which **types of content** perform best across different **regions** (US, GB, CA)?
-- How do **views, likes, and comments** vary over time?
-- What are the most **engaging videos and categories**?
-
-This project simulates that real-world scenario by building a complete data pipeline and BI dashboard to support those insights.
+This project demonstrates a complete end-to-end data engineering pipeline on AWS using trending YouTube video data from Kaggle. The final result is a business-ready QuickSight dashboard to help stakeholders make data-driven decisions.
 
 ---
 
-## 🧩 Architecture Overview
+## 🎯 Project Overview
+This project simulates a real-world scenario where a video streaming analytics team wants to:
+- Understand what type of content performs well across regions (US, GB, CA)
+- Track daily video performance trends
+- Identify top performing creators and categories
+- Measure user engagement through views, likes, and comments
 
-**🗂️ Data Source:**  
-Raw CSV and JSON files containing YouTube video metadata (views, likes, category, etc.) stored in Amazon S3.
-
-**⚙️ Pipeline Components:**
-
-1. **Ingestion Layer**
-   - Raw data files uploaded to `s3://de-on-youtube-raw-*`
-   - AWS Lambda triggers on `ObjectCreated` events
-
-2. **Processing & Cleansing**
-   - AWS Glue ETL jobs transform and filter data
-   - Data is cleaned, typed, deduplicated, and converted to **Parquet**
-   - Output stored in partitioned form in a Cleansed S3 bucket
-
-3. **Analytics & Visualization**
-   - AWS Glue Crawlers catalog data into the Data Catalog
-   - Athena used for exploratory SQL queries
-   - QuickSight connected to the cleansed catalog table for visual dashboards
+The dataset used is from Kaggle's [Trending YouTube Video Statistics](https://www.kaggle.com/datasets/datasnaek/youtube-new).
 
 ---
 
-## 🛠️ Tools & Technologies
-
-| Layer            | Services & Tools                                                                 |
-|------------------|----------------------------------------------------------------------------------|
-| Ingestion        | **Amazon S3**, **AWS Lambda**                                                    |
-| Processing       | **AWS Glue Studio**, **PySpark**, **Glue DynamicFrame API**                      |
-| Data Storage     | Amazon S3 (Raw, Cleansed, Analytics)                                             |
-| Cataloging       | AWS Glue Crawlers, Glue Data Catalog                                             |
-| Query Engine     | **Amazon Athena**                                                                |
-| Visualization    | **Amazon QuickSight**                                                            |
-| Language         | **Python**, PySpark (for Glue), SQL (for Athena)                                 |
-| Orchestration    | Event-based triggers (S3 → Lambda → Glue)                                        |
+## ✅ Project Goals
+- **Data Ingestion**: Automatically ingest CSV and JSON files into AWS S3 (raw layer)
+- **ETL System**: Clean and transform raw data using AWS Glue (PySpark)
+- **Data Lake Formation**: Store data in partitioned Parquet format (cleansed layer)
+- **Scalability**: Use serverless services like Glue, Lambda, and S3 for handling scale
+- **Cloud-Native Architecture**: Entirely built and deployed on AWS
+- **Reporting**: Deliver insights through an interactive Amazon QuickSight dashboard
 
 ---
 
-## 🔍 Key Features
+## 🧱 Architecture Components
 
-- Predicate pushdown filtering (`region in ('us', 'ca', 'gb')`) for performance
-- Schema mapping and data type casting
-- Data Quality validation (row counts, column integrity)
-- Partitioned data lake by `region` and `category_id`
-- KPI cards, category trends, and regional breakdowns in QuickSight
+### Data Source
+- YouTube trending video statistics (CSV files per region + JSON metadata)
+- Dataset hosted on [Kaggle](https://www.kaggle.com/datasets/datasnaek/youtube-new)
 
----
-
-## 📊 QuickSight Dashboard Insights
-
-**Metrics & Visuals Tracked:**
-
-- ✅ Total Views, Likes, Comments (KPI Cards)
-- 📈 Views over Time (Line Chart)
-- 🌍 Viewership Share by Region (Donut Chart)
-- 🎵 Most Viewed Content Categories (Bar Chart)
-- 👍 Top Performing Videos by Likes & Views (Table)
-- 💬 Engagement by Category (Likes, Comments)
-
-> You can find these charts in the `/screenshots` folder or explore them directly in QuickSight if connected.
+### AWS Services Used
+| Layer             | Tools/Services                                                  |
+|------------------|-----------------------------------------------------------------|
+| Ingestion         | Amazon S3, AWS Lambda                                           |
+| Processing        | AWS Glue Studio, PySpark, Glue DynamicFrames                    |
+| Data Storage      | Amazon S3 (raw, cleansed, analytics zones)                      |
+| Cataloging        | AWS Glue Crawler, AWS Glue Data Catalog                         |
+| Query Engine      | Amazon Athena                                                   |
+| Visualization     | Amazon QuickSight                                               |
+| Orchestration     | AWS Lambda (event triggers), Glue Workflows                     |
+| Permissions       | AWS IAM (roles for S3, Glue, Athena, QuickSight)                |
 
 ---
 
+## 📊 QuickSight Dashboard Highlights
+- **KPIs (KPI Cards)**:
+  - Total Views, Likes, Comments
+  - Number of Active Regions
 
-## 🧠 Skills Demonstrated
+- **Bar & Donut Charts**:
+  - Top Content Categories by Views
+  - Regional Viewership Distribution
+  - Count of Likes by Content Type
 
-- Cloud-native ETL using **AWS Glue**
-- Trigger-based data movement via **AWS Lambda**
-- Working with **partitioned data lakes** using Parquet
-- Data modeling with **PySpark + Glue DynamicFrames**
-- Querying and validation with **Athena**
-- Business storytelling and dashboard design in **QuickSight**
-- Professional project documentation using **GitHub**
+- **Time-Series Line Graph**:
+  - Daily Trends in Views Over Time
+
+- **Table View**:
+  - Top Performing Videos by Likes and Views
 
 ---
+
+## 📁 Folder Structure
+```
+youtube-analytics-project/
+├── lambda/                  # Lambda function code for S3 trigger events
+├── glue-jobs/               # ETL jobs (PySpark scripts)
+├── scripts/                 # Athena SQL queries, Glue crawler configs
+├── screenshots/             # Sample QuickSight dashboard images
+├── README.md                # Project documentation
+```
+
+---
+
+## 🚀 Skills & Concepts Demonstrated
+- Cloud Data Engineering (AWS-first approach)
+- Serverless ETL development with AWS Glue
+- Event-driven processing using AWS Lambda
+- Partitioned data lake architecture on S3
+- Query optimization with Athena + Parquet
+- Business intelligence and storytelling via QuickSight
+- End-to-end project structuring and GitHub documentation
+
+---
+
+## 📦 Dataset Source
+**Trending YouTube Video Statistics** – [Kaggle Link](https://www.kaggle.com/datasets/datasnaek/youtube-new)
+- Daily trending video data per region (US, GB, CA)
+- Includes fields like: `video_id`, `title`, `category_id`, `views`, `likes`, `comments`, `publish_time`, etc.
+- Category metadata provided via JSON files
+
+---
+
+## 📸 Dashboards
+> 📍Screenshots are available in the `screenshots/` folder. 
+> Final QuickSight visuals show KPIs, time trends, category performance, and regional breakdowns.
+
+---
+
+
+
