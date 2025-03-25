@@ -70,5 +70,21 @@ YouTube trending video statistics (CSV & JSON files) stored in Amazon S3.
 ---
 
 ## Folder Structure
-📁 youtube-analytics-project/ ├── lambda/ # Lambda function for trigger-based ingestion ├── glue-jobs/ # ETL PySpark scripts for AWS Glue ├── scripts/ # Athena SQL or crawler setup scripts ├── screenshots/ # QuickSight visuals ├── README.md
+📁 youtube-analytics-project/ 
+├── lambda/ # Lambda function for trigger-based ingestion 
+├── glue-jobs/ # ETL PySpark scripts for AWS Glue
+├── scripts/ # Athena SQL or crawler setup scripts 
+├── screenshots/ # QuickSight visuals
+├── README.md
+
+## Skills Demonstrated
+
+- Cloud Data Engineering on AWS
+- ETL orchestration using AWS Glue
+- Event-driven data processing using Lambda
+- Data partitioning and performance optimization
+- BI and storytelling with QuickSight
+- GitHub project documentation
+
+---
 
