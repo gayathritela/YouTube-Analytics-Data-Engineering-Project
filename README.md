@@ -85,7 +85,6 @@ Some sample visuals generated from this project using Amazon QuickSight:
 - Business intelligence and storytelling via QuickSight
 - End-to-end project structuring and GitHub documentation
 
----
 
 
 
