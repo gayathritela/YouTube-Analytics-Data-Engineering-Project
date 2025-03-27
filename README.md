@@ -71,7 +71,7 @@ Some sample visuals generated from this project using Amazon QuickSight:
 - **Top Performing Videos by Engagement**  
   _A table showing most liked & viewed videos per region_
 
-> All visuals are available in the `/screenshots` folder 
+> All visuals are available in the `/Quicksight` folder 
 
 ---
 
